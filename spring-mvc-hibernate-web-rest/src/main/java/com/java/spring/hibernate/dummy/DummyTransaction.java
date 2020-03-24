@@ -1,15 +1,15 @@
 package com.java.spring.hibernate.dummy;
 
-public class DummyData {
+public class DummyTransaction {
     private int id;
     private Double balance;
 
-    public DummyData(int id, Double balance) {
+    public DummyTransaction(int id, Double balance) {
         this.id = id;
         this.balance = balance;
     }
 
-    public DummyData() {
+    public DummyTransaction() {
     }
 
     public int getId() {

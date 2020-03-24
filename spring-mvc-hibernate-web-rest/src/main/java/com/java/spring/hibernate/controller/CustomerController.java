@@ -21,6 +21,7 @@ import java.util.List;
 @Controller
 
 // This class will be responsible for controlling the customer
+@RequestMapping("/customer")
 public class CustomerController {
      private CustomerDao customerDao;
 
@@ -29,12 +30,12 @@ public class CustomerController {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     }
 
-    @RequestMapping(value = UrlController.GET_ALL_CUSTOMER, method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody List<Customer> showCustomers() {
         return customerDao.showCustomers();
     }
 
-    @RequestMapping(value = UrlController.CREATE_CUSTOMER, method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public @ResponseBody Customer addCustomer(@RequestBody DummyCustomer dummyCustomer) {
         Session session = getSession();
         session.beginTransaction();
@@ -52,7 +53,7 @@ public class CustomerController {
         return customerDao.addCustomer(customer);
     }
 
-    @RequestMapping(value = UrlController.REMOVE_CUSTOMER, method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public @ResponseBody Customer removeCustomer(@RequestBody DummyId dummyId) {
         Session session = getSession();
         session.beginTransaction();
@@ -64,7 +65,7 @@ public class CustomerController {
         return customerDao.removeCustomer(dummyId.getId());
     }
 
-    @RequestMapping(value = UrlController.UPDATE_CUSTOMER, method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public @ResponseBody Customer updateCustomer(@RequestBody DummyUpdateCustomer dummyUpdateCustomer) {
         Session session = getSession();
         session.beginTransaction();

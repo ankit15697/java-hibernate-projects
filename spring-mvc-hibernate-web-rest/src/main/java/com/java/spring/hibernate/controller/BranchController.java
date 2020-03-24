@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 @Controller
+@RequestMapping("/branch")
 public class BranchController {
     private BranchDao branchDao;
 
@@ -19,12 +20,12 @@ public class BranchController {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     }
 
-    @RequestMapping(value = UrlController.GET_ALL_BRANCH, method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody List<Branch> getAllBranches() {
         return branchDao.showBranches();
     }
 
-    @RequestMapping(value = UrlController.CREATE_BRANCH, method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public @ResponseBody Branch addBranch(@RequestBody Branch branch) {
        return branchDao.addBranch(branch);
     }
